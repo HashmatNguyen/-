@@ -1,0 +1,722 @@
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package SapXepSinhVienTheoMaSinhVien;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        List<SinhVien> list=new ArrayList<>();
+        while (sc.hasNext()){
+            SinhVien sinhVien=new SinhVien(sc.nextLine(), sc.nextLine(), sc.nextLine(),sc.nextLine());
+            list.add(sinhVien);
+        }
+        Collections.sort(list);
+        for(SinhVien sinhVien:list)
+            System.out.println(sinhVien);
+    }
+}
+
+package SapXepSinhVienTheoMaSinhVien;
+
+public class SinhVien implements Comparable<SinhVien>{
+    private String ma,ten,lop,email;
+
+    public SinhVien(String ma, String ten, String lop, String email) {
+        this.ma = ma;
+        this.ten = ten;
+        this.lop = lop;
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s %s %s",ma,ten,lop,email);
+    }
+
+    @Override
+    public int compareTo(SinhVien o) {
+        return ma.compareTo(o.ma);
+    }
+}
+
+package SapXepSinhVienTheoLop;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=Integer.parseInt(sc.nextLine());
+        List<SinhVien> list=new ArrayList<>();
+        while (t-->0){
+            SinhVien sinhVien=new SinhVien(sc.nextLine(), sc.nextLine(), sc.nextLine(),sc.nextLine());
+            list.add(sinhVien);
+        }
+        Collections.sort(list);
+        for(SinhVien sinhVien:list)
+            System.out.println(sinhVien);
+    }
+}
+
+
+
+package SapXepSinhVienTheoMaSinhVien;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        List<SinhVien> list=new ArrayList<>();
+        while (sc.hasNext()){
+            SinhVien sinhVien=new SinhVien(sc.nextLine(), sc.nextLine(), sc.nextLine(),sc.nextLine());
+            list.add(sinhVien);
+        }
+        Collections.sort(list);
+        for(SinhVien sinhVien:list)
+            System.out.println(sinhVien);
+    }
+}
+package SapXepSinhVienTheoMaSinhVien;
+
+public class SinhVien implements Comparable<SinhVien>{
+    private String ma,ten,lop,email;
+
+    public SinhVien(String ma, String ten, String lop, String email) {
+        this.ma = ma;
+        this.ten = ten;
+        this.lop = lop;
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s %s %s",ma,ten,lop,email);
+    }
+
+    @Override
+    public int compareTo(SinhVien o) {
+        return ma.compareTo(o.ma);
+    }
+}
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class SapXepDonHang implements Comparable<SapXepDonHang>{
+    private String ten,ma,soThuTuDonHang;
+    private long donGia,soLuong,giamGia,thanhTien;
+
+    public SapXepDonHang(String ten, String ma, long donGia, long soLuong) {
+        this.ten = ten;
+        this.ma = ma;
+        this.soThuTuDonHang=ma.substring(1,4);
+        this.donGia = donGia;
+        this.soLuong = soLuong;
+        if(this.ma.charAt(4)=='2'){
+            this.giamGia=(this.donGia*3*this.soLuong)/10;
+        }
+        else this.giamGia=(this.donGia*this.soLuong)/2;
+        thanhTien=this.donGia*this.soLuong-this.giamGia;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s %s %d %d",ten,ma,soThuTuDonHang,giamGia,thanhTien);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=Integer.parseInt(sc.nextLine());
+        List<SapXepDonHang> list=new ArrayList<>();
+        for(int i=0;i<t;i++){
+            list.add(new SapXepDonHang(sc.nextLine(),sc.nextLine()
+                    , Long.parseLong(sc.nextLine()), Long.parseLong(sc.nextLine())));
+        }
+        Collections.sort(list);
+        for(SapXepDonHang sapXepDonHang:list)
+            System.out.println(sapXepDonHang);
+    }
+
+    @Override
+    public int compareTo(SapXepDonHang o) {
+        return this.soThuTuDonHang.compareTo(o.soThuTuDonHang);
+    }
+}
+package LopINTSET;
+
+import java.util.TreeSet;
+
+public class IntSet {
+    private TreeSet<Integer> set=new TreeSet<>();
+    public IntSet(int a[]){
+        for(int i=0;i<a.length;i++){
+            set.add(a[i]);
+        }
+    }
+
+    public IntSet() {
+    }
+
+    @Override
+    public String toString() {
+        String tmp="";
+        for(Integer i:set)
+            tmp+= String.valueOf(i)+ " ";
+        return tmp;
+    }
+
+    public IntSet union(IntSet s2) {
+        IntSet intSet=new IntSet();
+        intSet.set.addAll(set);
+        intSet.set.addAll(s2.set);
+        return  intSet;
+    }
+}
+
+
+
+
+
+package DiemDanh1;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc=new Scanner(System.in);
+//         sc=new Scanner(new File("C:\\Users\\Admin\\Desktop\\SPOJ\\src\\input.txt"));
+        int t=Integer.parseInt(sc.nextLine());
+        List<SinhVien> list=new ArrayList<>();
+        for(int i=0;i<t;i++){
+            list.add(new SinhVien(sc.nextLine(), sc.nextLine(), sc.nextLine()));
+        }
+        for(int i=0;i<t;i++){
+//            String maSinhVien=sc.next();
+//            String diemDanh=sc.next();
+            String[] split = sc.nextLine().trim().split("\\W+");
+            String maSinhVien=split[0];
+            String diemDanh=split[1];
+            for(SinhVien sinhVien:list)
+                if(sinhVien.getMa().equals(maSinhVien)){
+                    sinhVien.setDiemDanh(diemDanh);
+                    break;
+                }
+        }
+        for(SinhVien sinhVien:list)
+            System.out.println(sinhVien);
+    }
+}
+package DiemDanh1;
+
+public class SinhVien {
+    private String ma,ten,lop,ghiChu="";
+    private int diem;
+
+    public SinhVien(String ma, String ten, String lop) {
+        this.ma = ma;
+        this.ten = ten;
+        this.lop = lop;
+        diem=10;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setDiemDanh(String a) {
+        for(int i=0;i<a.length();i++){
+            if(diem>0){
+                if(a.charAt(i)=='v') diem-=2;
+                else if(a.charAt(i)=='m') diem-=1;
+            }
+            else{
+                diem=0;
+                break;
+            }
+        }
+        if(diem==0) ghiChu="KDDK";
+    }
+
+    @Override
+    public String toString() {
+        String format = String.format("%s %s %s %d", ma, ten, lop, diem);
+        if(ghiChu.equals("")|| ghiChu.isEmpty()){
+            return format;
+        }
+        return format+" "+ghiChu;
+    }
+}
+
+
+
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * 
+ */
+public class ThiSinh {
+    private String name;
+    private String date;
+    private float diem1;
+    private float diem2;
+    private float diem3;
+
+    public ThiSinh() {
+        
+    }
+
+    public ThiSinh(String name, String date, float diem1, float diem2, float diem3) {
+        this.name = name;
+        this.date = date;
+        this.diem1 = diem1;
+        this.diem2 = diem2;
+        this.diem3 = diem3;
+    }
+
+    
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public float getDiem1() {
+        return diem1;
+    }
+
+    public void setDiem1(float diem1) {
+        this.diem1 = diem1;
+    }
+
+    public float getDiem2() {
+        return diem2;
+    }
+
+    public void setDiem2(float diem2) {
+        this.diem2 = diem2;
+    }
+
+    public float getDiem3() {
+        return diem3;
+    }
+
+    public void setDiem3(float diem3) {
+        this.diem3 = diem3;
+    }
+    
+    public static void main(String[] args) {
+        ThiSinh ts = new ThiSinh();
+        Scanner sc = new Scanner(System.in);
+        ts.setName(sc.nextLine());
+        ts.setDate(sc.next());
+        ts.setDiem1(sc.nextFloat());
+        ts.setDiem2(sc.nextFloat());
+        ts.setDiem3(sc.nextFloat());
+        
+        
+        System.out.println(ts.getName()+" "+ts.getDate() +" "+ (ts.getDiem1()+ ts.getDiem2() + ts.getDiem3()));
+    }
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+Danh sach sinh vien auto tang
+package DanhSachDoiTuongSinhVien;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class SinhVien {
+    private String maSv;
+    private String ten;
+    private String lop;
+    private Date ngaySinh;
+    private Float diem;
+
+    public SinhVien(int maSv, String ten, String lop, String ngaySinh, Float diem) throws ParseException {
+        this.maSv = "B20DCCN"+String.format("%03d",maSv);
+        this.ten = ten;
+        this.lop = lop;
+        this.ngaySinh = new SimpleDateFormat("dd/MM/yyyy").parse(ngaySinh);
+        this.diem = diem;
+    }
+    public String toString(){
+        return String.format("%s %s %s %s %.2f",maSv,ten,lop,new SimpleDateFormat("dd/MM/yyyy").format(ngaySinh),diem);
+    }
+}
+package DanhSachDoiTuongSinhVien;
+
+import java.text.ParseException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws ParseException {
+        Scanner sc=new Scanner(System.in);
+        int t=Integer.parseInt(sc.nextLine());
+        for(int i=1;i<=t;i++){
+            SinhVien sinhVien=new SinhVien(i,sc.nextLine(),sc.nextLine(),sc.nextLine(),Float.parseFloat(sc.nextLine()));
+            System.out.println(sinhVien);
+        }
+    }
+}
+private String chuanHoa(String ten) {
+        String tmp="";
+        String[] split = ten.trim().toLowerCase().split("\\W+");
+        char[] chars = split[0].toCharArray();
+        chars[0]-=32;
+        tmp+=new String(chars);
+        for(int i=1;i<split.length;i++){
+            chars = split[i].toCharArray();
+            chars[0]-=32;
+            tmp+=" "+new String(chars);
+        }
+        return tmp;
+
+
+
+
+
+
+
+
+Danh sasch nhan vien
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+
+ */
+public class DSNhanVien {
+    private String ma;
+    private String hoTen;
+    private String gioiTinh;
+    private Date ngaySinh;
+    private String diaChi;
+    private String maThue;
+    private Date ngayKy;
+
+    public DSNhanVien(int id, String hoTen, String gioiTinh, String ngaySinh, String diaChi, String maThue, String ngayKy) throws ParseException {
+        this.ma = String.format("%05d", id);
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = new SimpleDateFormat("dd/MM/yyyy").parse(ngaySinh);
+        this.diaChi = diaChi;
+        this.maThue = maThue;
+        this.ngayKy = new SimpleDateFormat("dd/MM/yyyy").parse(ngayKy);
+    }
+    
+    
+    
+    @Override
+    public String toString() {
+        return ma+" "+hoTen+" "+gioiTinh+" "+new SimpleDateFormat("dd/MM/yyyy").format(ngaySinh)+" "+diaChi+" "+maThue
+                +" "+new SimpleDateFormat("dd/MM/yyyy").format(ngayKy);
+    }
+    
+    public static void main(String[] args) throws ParseException {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        ArrayList<DSNhanVien> arr = new ArrayList<>();
+        for(int i=1; i<=n; i++) {
+            DSNhanVien ds = new DSNhanVien(i, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            arr.add(ds);
+        }
+        for(DSNhanVien nhanVien : arr) {
+            
+            System.out.println(nhanVien);
+        }
+    }
+}
+
+Thu nhap giao vien
+package TinhThuNhapGiaoVien;
+
+import java.util.Scanner;
+
+public class GiaoVien {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String maNgach=sc.nextLine();
+        String name=sc.nextLine();
+        Long luongCoBan=Long.parseLong(sc.nextLine());
+        String chucVu=String.valueOf(maNgach.charAt(0))+String.valueOf(maNgach.charAt(1));
+        long heSo=(maNgach.charAt(2)-'0')*10+maNgach.charAt(3)-'0';
+        long phuCap=0;
+        if(chucVu.equals("HT")){
+            phuCap=2000000;
+        }
+        else if(chucVu.equals("HP")){
+            phuCap=900000;
+        }
+        else{
+            phuCap=500000;
+        }
+        System.out.format("%s %s %d %d %d\n",maNgach,name,heSo,phuCap,heSo*luongCoBan+phuCap);
+    }
+}
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package oop;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author quang
+ */
+public class ThuNhapGV {
+    private String maNgach;
+    private String hoTen;
+    private int luongCB;
+    
+    public ThuNhapGV() {
+        
+    }
+
+    public String getMaNgach() {
+        return maNgach;
+    }
+
+    public void setMaNgach(String maNgach) {
+        this.maNgach = maNgach;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public int getLuongCB() {
+        return luongCB;
+    }
+
+    public void setLuongCB(int luongCB) {
+        this.luongCB = luongCB;
+    }
+    
+    public static int hsLuong(String maNgach, int luongCB) {
+        char[] a = new char[2];
+        maNgach.getChars(2, 4, a, 0);
+        int hs = Integer.parseInt(new String(a));
+        return hs;
+    }
+    public static int phuCap(String maNgach) {
+        int pc = 0;
+        if(maNgach.startsWith("HT")) {
+            pc = 2000000;
+        } else if(maNgach.startsWith("HP")) {
+            pc = 900000;
+        } else pc = 500000;
+        return pc;
+    }
+    
+    public static int luong(String maNgach, int luongCB) {
+        int luong = 0;
+        
+        if(maNgach.startsWith("HT")) {
+            luong = luongCB*hsLuong(maNgach, luongCB) + phuCap(maNgach);
+        } else if(maNgach.startsWith("HP")) {
+            luong = luongCB*hsLuong(maNgach, luongCB) + phuCap(maNgach);
+        } else {
+            luong = luongCB*hsLuong(maNgach, luongCB) + phuCap(maNgach);
+        }
+        return luong;
+    }
+    
+    public static void main(String[] args) {
+        ThuNhapGV tn = new ThuNhapGV();
+        Scanner sc = new Scanner(System.in);
+        tn.setMaNgach(sc.nextLine());
+        tn.setHoTen(sc.nextLine());
+        tn.setLuongCB(sc.nextInt());
+        
+        System.out.println(tn.getMaNgach()+" "+tn.getHoTen()+" "+
+            ThuNhapGV.hsLuong(tn.getMaNgach(), tn.getLuongCB()) +" "+
+            ThuNhapGV.phuCap(tn.getMaNgach())+" "+
+            ThuNhapGV.luong(tn.getMaNgach(), tn.getLuongCB()));
+    }
+}
+
+
+
+Sap xep danh sach nhan vien ngay sinh:
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+
+ */
+public class DSNhanVien {
+    private String ma;
+    private String hoTen;
+    private String gioiTinh;
+    private Date ngaySinh;
+    private String diaChi;
+    private String maThue;
+    private Date ngayKy;
+
+    public DSNhanVien(int id, String hoTen, String gioiTinh, String ngaySinh, String diaChi, String maThue, String ngayKy) throws ParseException {
+        this.ma = String.format("%05d", id);
+        this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = new SimpleDateFormat("dd/MM/yyyy").parse(ngaySinh);
+        this.diaChi = diaChi;
+        this.maThue = maThue;
+        this.ngayKy = new SimpleDateFormat("dd/MM/yyyy").parse(ngayKy);
+    }
+    
+    
+    
+    @Override
+    public String toString() {
+        return ma+" "+hoTen+" "+gioiTinh+" "+new SimpleDateFormat("dd/MM/yyyy").format(ngaySinh)+" "+diaChi+" "+maThue
+                +" "+new SimpleDateFormat("dd/MM/yyyy").format(ngayKy);
+    }
+    public static class NameComparator implements Comparator<DSNhanVien> {
+	public int compare(DSNhanVien s1, DSNhanVien s2) {
+		return s1.ngaySinh.compareTo(s2.ngaySinh);
+	}
+}
+    public static void main(String[] args) throws ParseException {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        ArrayList<DSNhanVien> arr = new ArrayList<>();
+        for(int i=1; i<=n; i++) {
+            DSNhanVien ds = new DSNhanVien(i, sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine());
+            arr.add(ds);
+        }
+         Collections.sort(arr, new NameComparator());
+        for(DSNhanVien nhanVien : arr) {
+            
+            System.out.println(nhanVien);
+        }
+
+
+
+    }
+}
+
+Bang diem hoc sinh
+
+package BangDiemHocSinh;
+
+public class HocSinh implements Comparable<HocSinh>{
+    private String ma,ten,xepLoai;
+    private Double diemTb;
+
+    public HocSinh(int ma, String ten, Double diemTb) {
+        this.ma = "HS"+String.format("%02d",ma);
+        this.ten = ten;
+        this.diemTb = diemTb;
+        this.xepLoai=xepLoai(diemTb);
+    }
+
+    private String xepLoai(Double f) {
+        if(f>=9.0) return "XUAT SAC";
+        else if(f>=8.0) return "GIOI";
+        else if(f>=7.0) return "KHA";
+        else if(f>=5.0) return "TB";
+        else  return "YEU";
+    }
+
+    @Override
+    public String toString() {
+        return  ma + " " + ten + " "+diemTb+" "+xepLoai;
+    }
+
+    @Override
+    public int compareTo(HocSinh o) {
+        return diemTb<=o.diemTb?1:-1;
+    }
+}
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=Integer.parseInt(sc.nextLine());
+        List<HocSinh> list=new ArrayList<>();
+        for(int i=1;i<=t;i++){
+            String name= sc.nextLine();
+            Double diemTb=0.0;
+            for(int j=0;j<9;j++){
+                if(j!=0&&j!=1)diemTb+=sc.nextDouble();
+                else diemTb+=sc.nextDouble()*2.0;
+                diemTb=Math.round(diemTb*10.0)/10.0;
+            }
+            diemTb+=Double.parseDouble(sc.nextLine());
+            HocSinh hocSinh=new HocSinh(i,name,Double.parseDouble(String.format("%.1f",Math.round((diemTb/12.0f)*10.0)/10.0)));
+            list.add(hocSinh);
+        }
+        Collections.sort(list);
+        for(HocSinh hocSinh:list)
+            System.out.println(hocSinh);
+    }
+}
